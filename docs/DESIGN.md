@@ -15,7 +15,7 @@ A day-to-day adult who is not technical and has an app or feature idea. Every de
 5. **Phone first.** One column, at most 640px wide. Tap targets are at least 48px. Nothing needs dragging or hovering. Persona cards go to two columns from 700px.
 6. **Private by default.** No account, no ads, no tracking. The interface says where things are kept: in this browser.
 7. **Two languages, equal.** English and Hebrew. Hebrew is right-to-left throughout; addresses, model names and counts stay left-to-right.
-8. **A film, lightly.** Soya Productions presents the app like a movie studio: a skippable intro and a footer credit. The branding frames the app and never gets in the way of the task.
+8. **Branded lightly.** Soyactory, the Soya Software Factory, made the app: a short skippable intro and a footer credit. The branding frames the app and never gets in the way of the task.
 
 ## The flow
 
@@ -25,11 +25,11 @@ Results always read in this order: synthetic banner, sample-or-live label, the i
 
 ## Branding
 
-- Logo: `assets/soya-productions.jpg` — a black kitten on gold "SOYA PRODUCTIONS" letters, pink spotlight, navy sides.
-- Intro copy: "Soya Productions presents" / "Soya Productions מציגים". Title: "Roundtable" / "שולחן עגול".
-- Footer credit: "A Soya Productions film" / "הפקה של Soya Productions".
-- Intro background: radial gradient `#f4b8c8` → `#6b7bb8` → `#0F172A`, matching the poster.
-- App icons: a cat crop of the poster on navy `#0F172A`.
+- Artwork: `assets/soyactory-cat.jpg` and `assets/soyactory-mark.jpg` — Soya, a black kitten with green eyes, against a pink spotlight.
+- Intro copy: "From Soyactory" / "מבית Soyactory". Title: "Roundtable" / "שולחן עגול".
+- Footer credit: "Made by Soyactory" / "מבית Soyactory".
+- Intro background: radial gradient `#f4b8c8` → `#6b7bb8` → `#0F172A`, matching the artwork.
+- App icons: Soya's face on navy `#0F172A`.
 
 ## Tokens
 
