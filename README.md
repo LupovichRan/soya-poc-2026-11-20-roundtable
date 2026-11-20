@@ -1,6 +1,6 @@
 # Roundtable
 
-*Made by Soyactory, the Soya Software Factory.* App 1, 20 November 2026.
+*Made by Soycatory, the Soya Software Factory.* App 1, 20 November 2026.
 
 Roundtable is a phone-first web app. You describe an app idea or a feature in plain language, and a **synthetic panel** of everyday people tells you what was unclear, what they would object to, what they would ask for, who the idea is really for, and whether your mascot fits.
 
@@ -56,7 +56,7 @@ pwa.js                 service worker registration, Add to Home Screen
 sw.js                  offline cache (bump VERSION when cached files change)
 manifest.webmanifest   web app manifest
 manifests/             the same manifest for use from that folder
-icons/  assets/        app icons and the Soyactory artwork
+icons/  assets/        app icons and the Soycatory artwork
 ```
 
 ## More detail

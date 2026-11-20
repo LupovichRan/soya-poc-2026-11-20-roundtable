@@ -1,4 +1,4 @@
-/* Roundtable — a Soyactory app.
+/* Roundtable — a Soycatory app.
    UI, language strings, the sample panel, the optional live panel, and localStorage.
    No framework, no build step. Everything stays in this browser. */
 (function () {
@@ -30,9 +30,9 @@
       title: 'Roundtable',
       otherLang: 'עברית',
       settings: 'Settings',
-      presents: 'From Soyactory',
+      presents: 'From Soycatory',
       skip: 'Skip',
-      credit: 'Made by Soyactory',
+      credit: 'Made by Soycatory',
       install: 'Add to Home Screen',
       homeTitle: 'Get a plain-language review of your idea',
       homeLead: 'Describe an app or a feature. A small panel of everyday people will tell you what is unclear, what they would ask for, and who it is for.',
@@ -106,9 +106,9 @@
       title: 'שולחן עגול',
       otherLang: 'English',
       settings: 'הגדרות',
-      presents: 'מבית Soyactory',
+      presents: 'מבית Soycatory',
       skip: 'דלג',
-      credit: 'מבית Soyactory',
+      credit: 'מבית Soycatory',
       install: 'הוספה למסך הבית',
       homeTitle: 'קבלו חוות דעת בשפה פשוטה על הרעיון שלכם',
       homeLead: 'תארו אפליקציה או תכונה. קבוצה קטנה של אנשים מן השורה תספר מה לא ברור, מה היו מבקשים, ולמי זה מתאים.',
@@ -690,7 +690,7 @@
     var html = document.documentElement;
     html.lang = state.lang;
     html.dir = state.lang === 'he' ? 'rtl' : 'ltr';
-    document.title = t('title') + ' — Soyactory';
+    document.title = t('title') + ' — Soycatory';
     setText('brand-title', t('title'));
     setText('lang-toggle', t('otherLang'));
     setText('open-settings', t('settings'));

@@ -18,8 +18,8 @@ Read `docs/DESIGN.md` and `docs/TECH.md` before changing how the app looks or ho
 - Storage keys: ideas `soya-roundtable-ideas`, language `soya-roundtable-lang`, settings `soya-roundtable-settings`.
 - Always show the yellow synthetic-panel banner on results. Label sample and live reviews clearly.
 - Do not invent demand. The sample path is a heuristic and is labelled as a sample.
-- Keep the skippable short intro and the footer credit "Made by Soyactory". Soyactory is a software factory, not a film studio: never describe the app as a film or movie.
-- Artwork: `assets/soyactory-cat.jpg` (intro) and `assets/soyactory-mark.jpg` (headers, footer). Icons are the same cat, on navy.
+- Keep the skippable short intro and the footer credit "Made by Soycatory". Soycatory is a software factory, not a film studio: never describe the app as a film or movie.
+- Artwork: `assets/soycatory-cat.jpg` (intro) and `assets/soycatory-mark.jpg` (headers, footer). Icons are the same cat, on navy.
 - No jargon in the interface ("LLM", "persona engine", "JSON"). Settings may say "OpenAI-compatible" once.
 - Limits: name 60, problem 600, promise 300, market 800 characters. Panel size 2–8, default 5.
 - Mascots: cat, fox, owl, bear, rabbit, frog only. Default is fox.
