@@ -1,6 +1,6 @@
 /* Roundtable service worker.
    Bump VERSION (roundtable-YYYYMMDDHHMMSS) whenever a cached file changes. */
-const VERSION = 'roundtable-20261120120000';
+const VERSION = 'roundtable-20261120150000';
 
 const PRECACHE = [
   './',
@@ -14,7 +14,8 @@ const PRECACHE = [
   'icons/roundtable-512.png',
   'icons/roundtable-maskable-512.png',
   'icons/roundtable-apple-180.png',
-  'assets/soya-productions.jpg',
+  'assets/soyactory-cat.jpg',
+  'assets/soyactory-mark.jpg',
 ];
 
 self.addEventListener('install', (event) => {

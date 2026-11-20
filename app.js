@@ -1,4 +1,4 @@
-/* Roundtable — Soya Productions.
+/* Roundtable — a Soyactory app.
    UI, language strings, the sample panel, the optional live panel, and localStorage.
    No framework, no build step. Everything stays in this browser. */
 (function () {
@@ -30,9 +30,9 @@
       title: 'Roundtable',
       otherLang: 'עברית',
       settings: 'Settings',
-      presents: 'Soya Productions presents',
+      presents: 'From Soyactory',
       skip: 'Skip',
-      credit: 'A Soya Productions film',
+      credit: 'Made by Soyactory',
       install: 'Add to Home Screen',
       homeTitle: 'Get a plain-language review of your idea',
       homeLead: 'Describe an app or a feature. A small panel of everyday people will tell you what is unclear, what they would ask for, and who it is for.',
@@ -106,9 +106,9 @@
       title: 'שולחן עגול',
       otherLang: 'English',
       settings: 'הגדרות',
-      presents: 'Soya Productions מציגים',
+      presents: 'מבית Soyactory',
       skip: 'דלג',
-      credit: 'הפקה של Soya Productions',
+      credit: 'מבית Soyactory',
       install: 'הוספה למסך הבית',
       homeTitle: 'קבלו חוות דעת בשפה פשוטה על הרעיון שלכם',
       homeLead: 'תארו אפליקציה או תכונה. קבוצה קטנה של אנשים מן השורה תספר מה לא ברור, מה היו מבקשים, ולמי זה מתאים.',
@@ -559,9 +559,18 @@
     if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
   }
 
+  function pageDir() { return document.documentElement.dir === 'rtl' ? 'rtl' : 'ltr'; }
+  /** The direction a text box should have: the page's while it is empty, then the language of its first letter.
+   *  Digits and punctuation do not decide. (A bare dir="auto" makes an empty box left-to-right on a Hebrew page.) */
+  function boxDir(value) {
+    var m = /[\u0590-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]|[A-Za-z\u00C0-\u024F]/.exec(String(value || ''));
+    if (!m) return pageDir();
+    return /[A-Za-z\u00C0-\u024F]/.test(m[0]) ? 'ltr' : 'rtl';
+  }
+
   function field(id, key, limit, multiline, helpKey) {
     var value = state.draft[id] || '';
-    var attrs = 'id="f-' + id + '" data-field="' + id + '" maxlength="' + limit + '" dir="auto" aria-describedby="h-' + id + '"';
+    var attrs = 'id="f-' + id + '" data-field="' + id + '" maxlength="' + limit + '" dir="' + boxDir(value) + '" aria-describedby="h-' + id + '"';
     var control = multiline
       ? '<textarea ' + attrs + ' rows="' + (limit > 400 ? 5 : 3) + '">' + esc(value) + '</textarea>'
       : '<input type="text" ' + attrs + ' value="' + esc(value) + '" autocomplete="off">';
@@ -681,7 +690,7 @@
     var html = document.documentElement;
     html.lang = state.lang;
     html.dir = state.lang === 'he' ? 'rtl' : 'ltr';
-    document.title = t('title') + ' — Soya Productions';
+    document.title = t('title') + ' — Soyactory';
     setText('brand-title', t('title'));
     setText('lang-toggle', t('otherLang'));
     setText('open-settings', t('settings'));
@@ -708,6 +717,7 @@
     var id = e.target.getAttribute && e.target.getAttribute('data-field');
     if (!id) return;
     state.draft[id] = e.target.value;
+    e.target.dir = boxDir(e.target.value);
     var counter = app.querySelector('[data-count="' + id + '"]');
     if (counter) counter.textContent = e.target.value.length + ' / ' + LIMITS[id];
   });

@@ -14,12 +14,12 @@ Read `docs/DESIGN.md` and `docs/TECH.md` before changing how the app looks or ho
 ## Product and UI rules
 
 - Prefer editing `index.html`, `styles.css`, `app.js`, `pwa.js`, `sw.js`. Do not add a `package.json` or a toolchain unless the task cannot be done in the browser.
-- Keep all interface strings in the `I18N` object in `app.js`, in English and Hebrew. Hebrew is right-to-left.
+- Keep all interface strings in the `I18N` object in `app.js`, in English and Hebrew. Hebrew is right-to-left. Text boxes must not use a bare `dir="auto"` (it makes an empty box left-to-right on a Hebrew page); use `boxDir()`.
 - Storage keys: ideas `soya-roundtable-ideas`, language `soya-roundtable-lang`, settings `soya-roundtable-settings`.
 - Always show the yellow synthetic-panel banner on results. Label sample and live reviews clearly.
 - Do not invent demand. The sample path is a heuristic and is labelled as a sample.
-- Keep the skippable movie-style intro and the footer credit "A Soya Productions film".
-- Logo: `assets/soya-productions.jpg`. Icons are a cat crop of that poster, on navy.
+- Keep the skippable short intro and the footer credit "Made by Soyactory". Soyactory is a software factory, not a film studio: never describe the app as a film or movie.
+- Artwork: `assets/soyactory-cat.jpg` (intro) and `assets/soyactory-mark.jpg` (headers, footer). Icons are the same cat, on navy.
 - No jargon in the interface ("LLM", "persona engine", "JSON"). Settings may say "OpenAI-compatible" once.
 - Limits: name 60, problem 600, promise 300, market 800 characters. Panel size 2–8, default 5.
 - Mascots: cat, fox, owl, bear, rabbit, frog only. Default is fox.
