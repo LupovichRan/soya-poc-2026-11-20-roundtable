@@ -59,6 +59,11 @@ manifests/             the same manifest for use from that folder
 icons/  assets/        app icons and the Soya Productions logo
 ```
 
+## More detail
+
+- [docs/DESIGN.md](docs/DESIGN.md) — design concepts, tokens, branding.
+- [docs/TECH.md](docs/TECH.md) — tech concepts, stack, storage, the model call, offline.
+
 ## Deploying
 
 Static files from the repository root, for example GitHub Pages. The manifest uses `./` for `start_url` and `scope` so it works under a sub-path. After changing any cached file, bump `VERSION` in `sw.js`.

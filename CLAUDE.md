@@ -2,6 +2,8 @@
 
 Roundtable is a phone-first web app for a day-to-day adult who is not technical. Keep it usable by that person.
 
+Read `docs/DESIGN.md` and `docs/TECH.md` before changing how the app looks or how it is built, and keep them in step with the code.
+
 ## Stack (do not change without a good reason)
 
 - Vanilla HTML, CSS and JavaScript. No framework, no build step, no bundler.
