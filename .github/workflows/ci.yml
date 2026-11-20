@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: this workflow only reads the code.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Syntax and app rules
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Every script parses
+        run: |
+          set -euo pipefail
+          for f in app.js pwa.js sw.js; do node --check "$f"; done
+      - name: Manifests are valid JSON
+        run: |
+          node -e 'for (const f of ["manifest.webmanifest", "manifests/roundtable.webmanifest"]) JSON.parse(require("fs").readFileSync(f, "utf8"))'
+      - name: Everything the offline cache lists exists
+        run: |
+          node -e '
+            const fs = require("fs");
+            const sw = fs.readFileSync("sw.js", "utf8");
+            if (!/const VERSION = .roundtable-\d{14}./.test(sw)) throw new Error("sw.js VERSION must look like roundtable-YYYYMMDDHHMMSS");
+            const list = /const PRECACHE = \[([\s\S]*?)\]/.exec(sw)[1].match(/["\x27][^"\x27]+["\x27]/g).map(s => s.slice(1, -1));
+            for (const f of list) if (f !== "./" && !fs.existsSync(f)) throw new Error("sw.js caches a file that does not exist: " + f);
+            console.log(list.length + " cached files checked");
+          '
+      - name: English and Hebrew have the same strings
+        run: |
+          node -e '
+            const src = require("fs").readFileSync("app.js", "utf8");
+            const block = /var I18N = (\{[\s\S]*?\n  \});/.exec(src)[1];
+            const I18N = (0, eval)("(" + block + ")");
+            const en = Object.keys(I18N.en), he = Object.keys(I18N.he);
+            const missing = en.filter(k => !he.includes(k)).concat(he.filter(k => !en.includes(k)));
+            if (missing.length) throw new Error("strings missing in one language: " + missing.join(", "));
+            console.log(en.length + " strings in both languages");
+          '
+      - name: No build tooling crept in
+        run: |
+          if git ls-files | grep -E '(^|/)(package\.json|package-lock\.json|yarn\.lock|pnpm-lock\.yaml)$'; then
+            echo "This app has no build step. Remove the files above." && exit 1
+          fi
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
